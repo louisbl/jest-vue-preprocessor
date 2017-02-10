@@ -4,8 +4,18 @@ const babelCore = require('babel-core');
 
 const transformBabel = src => {
   const transformOptions = {
-    presets: ['es2015'],
-    plugins: ['transform-runtime'],
+    presets: [
+      ['env', {
+        targets: {
+          browsers: ['last 2 versions']
+        }
+      }]
+    ],
+    plugins: [
+      'transform-runtime',
+      ['transform-object-rest-spread', { 'useBuiltIns': true }]
+    ],
+    comments: false,
   };
 
   let result;
